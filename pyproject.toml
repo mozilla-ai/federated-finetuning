@@ -1,38 +1,103 @@
 [build-system]
-requires = ["setuptools>=48", "setuptools_scm[toml]>=6.3.1"]
+# Retain build system requirements for both setuptools and hatch
+requires = ["setuptools>=48", "setuptools_scm[toml]>=6.3.1", "hatchling"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "blueprint"
+# Blueprint-specific metadata
+name = "federated-finetuning-blueprint"
+version = "1.0.0"  # Static version as required by PEP 621
+description = "Federated Fine-tuning Blueprint using Flower"
 readme = "README.md"
 license = {text = "Apache-2.0"}
 requires-python = ">=3.10"
-dynamic = ["version"]
 dependencies = [
   "loguru",
   "streamlit",
+  "flwr[simulation]==1.15.0",
+  "flwr-datasets>=0.5.0",
+  "torch==2.3.1",
+  "trl==0.8.1",
+  "bitsandbytes==0.45.0",
+  "scipy==1.13.0",
+  "peft==0.6.2",
+  "transformers==4.47.0",
+  "sentencepiece==0.2.0",
+  "omegaconf==2.3.0",
 ]
 
 [project.optional-dependencies]
+# Documentation tools
 docs = [
   "mkdocs",
   "mkdocs-material",
   "mkdocstrings-python",
 ]
 
+# Testing tools
 tests = [
   "pytest>=8,<9",
   "pytest-sugar>=0.9.6",
 ]
 
 [project.urls]
+# URLs for documentation and issue tracking
 Documentation = "https://mozilla-ai.github.io/Blueprint-template/"
 Issues = "https://github.com/mozilla-ai/Blueprint-template/issues"
 Source = "https://github.com/mozilla-ai/Blueprint-template"
 
 [tool.setuptools.packages.find]
+# Define where packages are located
 exclude = ["tests", "tests.*"]
 where = ["src"]
 namespaces = false
 
 [tool.setuptools_scm]
+# Automatic versioning via setuptools_scm
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
+[tool.flwr.app]
+# Flower app configurations
+publisher = "flwrlabs"
+
+[tool.flwr.app.components]
+# Define server and client applications
+serverapp = "src.flower.examples.flowertune-llm.flowertune_llm.server_app:app"
+clientapp = "src.flower.examples.flowertune-llm.flowertune_llm.client_app:app"
+
+[tool.flwr.app.config]
+# Flower-specific configurations for datasets, models, training, and strategy
+dataset.name = "vicgalle/alpaca-gpt4"
+model.name = "openlm-research/open_llama_3b_v2"
+model.quantization = 4
+model.gradient-checkpointing = true
+model.lora.peft-lora-r = 32
+model.lora.peft-lora-alpha = 64
+train.save-every-round = 5
+train.learning-rate-max = 5e-5
+train.learning-rate-min = 1e-6
+train.seq-length = 512
+train.training-arguments.output-dir = ""
+train.training-arguments.learning-rate = ""
+train.training-arguments.per-device-train-batch-size = 16
+train.training-arguments.gradient-accumulation-steps = 1
+train.training-arguments.logging-steps = 10
+train.training-arguments.num-train-epochs = 3
+train.training-arguments.max-steps = 10
+train.training-arguments.save-steps = 1000
+train.training-arguments.save-total-limit = 10
+train.training-arguments.gradient-checkpointing = true
+train.training-arguments.lr-scheduler-type = "constant"
+strategy.fraction-fit = 0.1
+strategy.fraction-evaluate = 0.0
+num-server-rounds = 50
+
+[tool.flwr.federations]
+default = "local-simulation"
+
+[tool.flwr.federations.local-simulation]
+options.num-supernodes = 20
+options.backend.client-resources.num-cpus = 8
+options.backend.client-resources.num-gpus = 1.0

@@ -1,26 +1,54 @@
 #!/bin/bash
 
-# Adapted from https://docs.streamlit.io/deploy/tutorials/kubernetes
+# Define results directory
+RESULTS_DIR="results"
 
-APP_PID=
-stopRunningProcess() {
-    # Based on https://linuxconfig.org/how-to-propagate-a-signal-to-child-processes-from-a-bash-script
-    if test ! "${APP_PID}" = '' && ps -p ${APP_PID} > /dev/null ; then
-       > /proc/1/fd/1 echo "Stopping ${COMMAND_PATH} which is running with process ID ${APP_PID}"
+echo "Running Federated Fine-Tuning..."
+# flwr run .
 
-       kill -TERM ${APP_PID}
-       > /proc/1/fd/1 echo "Waiting for ${COMMAND_PATH} to process SIGTERM signal"
+echo "Running Local Fine-Tuning..."
+python src/fine-tune-local.py 
 
-        wait ${APP_PID}
-        > /proc/1/fd/1 echo "All processes have stopped running"
-    else
-        > /proc/1/fd/1 echo "${COMMAND_PATH} was not started when the signal was sent or it has already been stopped"
-    fi
-}
+# Find the latest federated fine-tuning run (first folder in sorted list, excluding "_local")
+LATEST_FEDERATED=$(ls -t "$RESULTS_DIR" | grep -v "_local" | head -n 1)
 
-trap stopRunningProcess EXIT TERM
+# Find the latest local fine-tuning run (folder containing "_local", sorted by timestamp)
+LATEST_LOCAL=$(ls -t "$RESULTS_DIR" | grep "_local" | head -n 1)
 
-streamlit run ${HOME}/document-to-podcast/demo/app.py &
-APP_ID=${!}
+# Validate that the necessary results exist
+if [ -z "$LATEST_FEDERATED" ]; then
+  echo "Error: No federated fine-tuned model found in $RESULTS_DIR"
+  exit 1
+fi
 
-wait ${APP_ID}
+if [ -z "$LATEST_LOCAL" ]; then
+  echo "Error: No local fine-tuned model found in $RESULTS_DIR"
+  exit 1
+fi
+
+# Define paths
+FEDERATED_PATH="$RESULTS_DIR/$LATEST_FEDERATED/peft_100/"
+LOCAL_PATH="$RESULTS_DIR/$LATEST_LOCAL/checkpoint-100/"
+
+echo "Evaluating Federated Fine-Tuning..."
+#python ./src/benchmarks/general-nlp/eval.py \
+#  --base-model-name-path=Qwen/Qwen2-0.5B-Instruct \
+#  --peft-path="$FEDERATED_PATH" \
+#  --run-name=qwen-fed \
+#  --batch-size=16 \
+#  --quantization=4 \
+#  --category=stem,social_sciences
+
+echo "Evaluating Local Fine-Tuning..."
+python ./src/benchmarks/general-nlp/eval.py \
+  --base-model-name-path=Qwen/Qwen2-0.5B-Instruct \
+  --peft-path="$LOCAL_PATH" \
+  --run-name=qwen-local \
+  --batch-size=16 \
+  --quantization=4 \
+  --category=stem,social_sciences
+
+echo "Generating Visualizations..."
+python ./src/plot_results.py  # Adjust if necessary
+
+echo "All tasks completed!"

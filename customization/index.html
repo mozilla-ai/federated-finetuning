@@ -371,9 +371,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modifying-the-system-prompt" class="md-nav__link">
+  <a href="#modifying-the-streamlit-app" class="md-nav__link">
     <span class="md-ellipsis">
-      📝 Modifying the system Prompt
+      📝 Modifying the Streamlit App
     </span>
   </a>
   
@@ -483,9 +483,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modifying-the-system-prompt" class="md-nav__link">
+  <a href="#modifying-the-streamlit-app" class="md-nav__link">
     <span class="md-ellipsis">
-      📝 Modifying the system Prompt
+      📝 Modifying the Streamlit App
     </span>
   </a>
   
@@ -532,13 +532,24 @@
 <p>This Blueprint is designed to be flexible and easily adaptable to your specific needs. This guide will walk you through some key areas you can customize to make the Blueprint your own.</p>
 <hr />
 <h2 id="changing-the-model">🧠 <strong>Changing the Model</strong></h2>
-<h2 id="modifying-the-system-prompt">📝 <strong>Modifying the system Prompt</strong></h2>
-<h2 id="other-customization-ideas">💡 Other Customization Ideas</h2>
+<p>To swap out the default model for a different one, update the model name in <code>pyproject.toml</code> as long as it is a model from HuggingFace. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>model.name<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;YOUR_CUSTOM_MODEL&gt;&quot;</span>
+</span></code></pre></div>
+<p>Ensure that the new model supports the same fine-tuning methods as the original.</p>
+<hr />
+<h2 id="modifying-the-streamlit-app">📝 <strong>Modifying the Streamlit App</strong></h2>
+<p>Make your own application of a federated fine-tuned model and launch it in an application in the browser. Add graphics, new ways of prompting the model, and more. </p>
+<hr />
+<h2 id="other-customization-ideas">💡 <strong>Other Customization Ideas</strong></h2>
 <ul>
-<li>other ideas..</li>
+<li>Adjust <strong>training parameters</strong> in <code>pyproject.toml</code>, such as batch size, number of rounds, and learning rate.</li>
+<li>Modify <strong>dataset preprocessing</strong> in <code>src/flowertune_llm/dataset.py</code> to support different data formats.</li>
+<li>Implement <strong>custom evaluation metrics</strong> in <code>src/benchmarks/eval.py</code> to better assess performance based on your specific requirements.</li>
 </ul>
+<hr />
 <h2 id="contributing-to-the-blueprint">🤝 <strong>Contributing to the Blueprint</strong></h2>
 <p>Want to help improve or extend this Blueprint? Check out the <strong><a href="../future-features-contributions/">Future Features &amp; Contributions Guide</a></strong> to see how you can contribute your ideas, code, or feedback to make this Blueprint even better!</p>
+<p>Moreover, join Flower's <a href="https://flower.ai/join-slack/">Slack</a> where you can chat with the developers and maintainers of this Blueprint.  </p>
 
 
 

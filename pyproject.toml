@@ -70,7 +70,7 @@ clientapp = "src.flower.examples.flowertune-llm.flowertune_llm.client_app:app"
 [tool.flwr.app.config]
 # Flower-specific configurations for datasets, models, training, and strategy
 dataset.name = "vicgalle/alpaca-gpt4"
-model.name = "openlm-research/open_llama_3b_v2"
+model.name = "Qwen/Qwen2-0.5B-Instruct"
 model.quantization = 4
 model.gradient-checkpointing = true
 model.lora.peft-lora-r = 32

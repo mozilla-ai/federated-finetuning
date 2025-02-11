@@ -499,14 +499,14 @@
 <p>Follow this option if you want to quickly set up and run the Blueprint with minimal configuration.</p>
 <ol>
 <li>Clone the repository:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mozilla-ai/blueprint-federated-finetuning.git
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mozilla-ai/blueprint-federated-finetuning.git
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>blueprint-federated-finetuning
 </span></code></pre></div></li>
 <li>Install dependencies:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </span></code></pre></div></li>
 <li>Run the default simulation:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>flwr<span class="w"> </span>run<span class="w"> </span>.
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>flwr<span class="w"> </span>run<span class="w"> </span>.
 </span></code></pre></div></li>
 </ol>
 <hr />
@@ -514,12 +514,12 @@
 <p>Choose this option if you want to customize the setup for specific requirements.</p>
 <ol>
 <li>Clone the repository and navigate to the directory:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mozilla-ai/blueprint-federated-finetuning.git
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/mozilla-ai/blueprint-federated-finetuning.git
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">cd</span><span class="w"> </span>blueprint-federated-finetuning
 </span></code></pre></div></li>
 <li>Modify <code>pyproject.toml</code> to adjust parameters like number of rounds, client participation, and resource allocation.</li>
 <li>Install dependencies and run the customized setup:
-   <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>--run-config<span class="w"> </span><span class="s2">&quot;num-server-rounds=10 strategy.fraction-fit=0.25&quot;</span>
 </span></code></pre></div></li>
 </ol>

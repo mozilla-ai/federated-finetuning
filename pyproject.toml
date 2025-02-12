@@ -64,8 +64,8 @@ publisher = "flwrlabs"
 
 [tool.flwr.app.components]
 # Define server and client applications
-serverapp = "src.flower.examples.flowertune-llm.flowertune_llm.server_app:app"
-clientapp = "src.flower.examples.flowertune-llm.flowertune_llm.client_app:app"
+serverapp = "src.flowertune_llm.server_app:app"
+clientapp = "src.flowertune_llm.client_app:app"
 
 [tool.flwr.app.config]
 # Flower-specific configurations for datasets, models, training, and strategy

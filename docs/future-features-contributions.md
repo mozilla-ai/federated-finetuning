@@ -27,7 +27,7 @@ We’d love to see how you can enhance this Blueprint! If you create improvement
 
 ### 💡 **Share Your Ideas**
 
-Got an idea for how this Blueprint could be improved? You can share your suggestions through [GitHub Discussions](https://github.com/mozilla-ai/federated-finetuningdiscussions).
+Got an idea for how this Blueprint could be improved? You can share your suggestions through [GitHub Discussions](https://github.com/mozilla-ai/federated-finetuning/discussions).
 
 ---
 

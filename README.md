@@ -10,7 +10,7 @@ This blueprint demonstrates **Federated Fine-Tuning of LLMs** using [Flower](htt
 
 ![](./images/flower_visual.png)
 
-### 👉 📖 For detailed guidance, visit our [Docs here](https://mozilla-ai.github.io/Blueprint-template/)
+### 👉 📖 For detailed guidance, visit our [Docs here](https://mozilla-ai.github.io/federated-finetuning/)
 
 ---
 
@@ -51,7 +51,7 @@ flwr run . --run-config "num-server-rounds=10 strategy.fraction-fit=0.25"
 
 ### Run with the Deployment Engine
 
-Follow this [how-to guide](https://flower.ai/docs/framework/how-to-run-flower-with-deployment-engine.html) to run the same app in this example but with Flower's Deployment Engine. After that, you might be intersted in setting up [secure TLS-enabled communications](https://flower.ai/docs/framework/how-to-enable-tls-connections.html) and [SuperNode authentication](https://flower.ai/docs/framework/how-to-authenticate-supernodes.html) in your federation.
+Follow this [how-to guide](https://flower.ai/docs/framework/how-to-run-flower-with-deployment-engine.html) to run the same app in this example but with Flower's Deployment Engine. After that, you might be interested in setting up [secure TLS-enabled communications](https://flower.ai/docs/framework/how-to-enable-tls-connections.html) and [SuperNode authentication](https://flower.ai/docs/framework/how-to-authenticate-supernodes.html) in your federation.
 
 If you are already familiar with how the Deployment Engine works, you may want to learn how to run it using Docker. Check out the [Flower with Docker](https://flower.ai/docs/framework/docker/index.html) documentation.
 

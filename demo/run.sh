@@ -64,7 +64,4 @@ python ./src/benchmarks/finance/eval.py \
   --quantization=4 \
   --datasets=fpb,fiqa,tfns
 
-echo "Generating Visualizations..."
-python ./src/plot_results.py  # Adjust if necessary
-
 echo "All tasks completed!"

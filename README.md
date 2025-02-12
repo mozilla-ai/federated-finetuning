@@ -73,7 +73,7 @@ We provide a Streamlit web demo for testing the fine-tuned model in real time. T
 
 ### Run the Demo
 ```bash
-streamlit run demo/app.py --server.address=0.0.0.0 --server.port=8501 -- --model-path <MODEL_PATH> # <FLOWERTUNE-LLM-REPO><RESULTS><TIMESTAMP><PEFT_#>
+streamlit run demo/app.py --server.address=0.0.0.0 --server.port=8501 -- --model-path <MODEL_PATH> # <RESULTS><TIMESTAMP><PEFT_#>
 ```
 Once running, open your browser and go to:
 ```bash

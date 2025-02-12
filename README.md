@@ -100,8 +100,7 @@ We also provide `./demo/run.sh` that runs federated fine-tuning with default set
 
 ## Expected results
 
-![](./images/accuracy_plot_stem.png)
-![](./images/accuracy_plot_social.png)
+![](./images/accuracy_plot_all_datasets.png)
 
 ## Device Resources
 

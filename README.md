@@ -27,8 +27,8 @@ This blueprint demonstrates **Federated Fine-Tuning of LLMs** using [Flower](htt
 
 ### 1️⃣ Clone the Project
 ```bash
-git clone https://github.com/mozilla-ai/blueprint-federated-finetuning.git
-cd blueprint-federated-finetuning
+git clone https://github.com/mozilla-ai/federated-finetuning.git
+cd federated-finetuning
 ```
 
 ### 2️⃣ Update submodule and install dependencies

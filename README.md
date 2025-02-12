@@ -10,7 +10,7 @@ This blueprint demonstrates **Federated Fine-Tuning of LLMs** using [Flower](htt
 
 ![](./images/flower_visual.png)
 
-### 👉 📖 For detailed guidance, visit our [Docs here](https://mozilla-ai.github.io/Blueprint-template/)
+### 👉 📖 For detailed guidance, visit our [Docs here](https://mozilla-ai.github.io/federated-finetuning/)
 
 ---
 

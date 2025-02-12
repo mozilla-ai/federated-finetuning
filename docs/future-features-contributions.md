@@ -8,7 +8,7 @@ This Blueprint is an evolving project designed to grow with the help of the open
 
 ### 🛠️ **Enhance the Blueprint**
 - Check the [Issues](https://github.com/mozilla-ai/federated-finetuning/issues) page to see if there are feature requests you'd like to implement.
-- Refer to our [Contribution Guide](https://github.com/mozilla-ai/blueprint-template/blob/main/CONTRIBUTING.md) for more details on contributions.
+- Refer to our [Contribution Guide](https://github.com/mozilla-ai/federated-finetuning/blob/main/CONTRIBUTING.md) for more details on contributions.
 
 ---
 
@@ -21,13 +21,13 @@ This Blueprint is designed to be a foundation you can build upon. By extending i
 - **Customization options**: Develop an interactive UI to adjust training parameters dynamically.
 - **Enhanced evaluation metrics**: Incorporate advanced performance tracking for better model comparison.
 
-We’d love to see how you can enhance this Blueprint! If you create improvements or extend its capabilities, consider contributing them back to the project so others in the community can benefit from your work. Check out our [Contributions Guide](https://github.com/mozilla-ai/blueprint-template/blob/main/CONTRIBUTING.md) to get started!
+We’d love to see how you can enhance this Blueprint! If you create improvements or extend its capabilities, consider contributing them back to the project so others in the community can benefit from your work. Check out our [Contributions Guide](https://github.com/mozilla-ai/federated-finetuning/blob/main/CONTRIBUTING.md) to get started!
 
 ---
 
 ### 💡 **Share Your Ideas**
 
-Got an idea for how this Blueprint could be improved? You can share your suggestions through [GitHub Discussions](https://github.com/mozilla-ai/blueprint-template/discussions).
+Got an idea for how this Blueprint could be improved? You can share your suggestions through [GitHub Discussions](https://github.com/mozilla-ai/federated-finetuningdiscussions).
 
 ---
 

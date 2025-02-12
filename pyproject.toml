@@ -42,9 +42,9 @@ tests = [
 
 [project.urls]
 # URLs for documentation and issue tracking
-Documentation = "https://mozilla-ai.github.io/Blueprint-template/"
-Issues = "https://github.com/mozilla-ai/Blueprint-template/issues"
-Source = "https://github.com/mozilla-ai/Blueprint-template"
+Documentation = "https://mozilla-ai.github.io/federated-finetuning/"
+Issues = "https://github.com/mozilla-ai/federated-finetuning/issues"
+Source = "https://github.com/mozilla-ai/federated-finetuning"
 
 [tool.setuptools.packages.find]
 # Define where packages are located

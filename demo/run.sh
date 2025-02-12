@@ -7,7 +7,7 @@ echo "Running Federated Fine-Tuning..."
 # flwr run .
 
 echo "Running Local Fine-Tuning..."
-python src/fine-tune-local.py 
+python src/fine-tune-local.py
 
 # Find the latest federated fine-tuning run (first folder in sorted list, excluding "_local")
 LATEST_FEDERATED=$(ls -t "$RESULTS_DIR" | grep -v "_local" | head -n 1)

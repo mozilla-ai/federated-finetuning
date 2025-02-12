@@ -39,4 +39,3 @@ flwr run . --run-config "num-server-rounds=10 strategy.fraction-fit=0.25"
 ```
 
 For more details on customization, refer to the **[Customization Guide](customization.md)**.
-

@@ -38,4 +38,3 @@ This project is part of a larger initiative to create a collection of reusable s
 ---
 
 Your contributions help make this Blueprint better for everyone 🎉
-

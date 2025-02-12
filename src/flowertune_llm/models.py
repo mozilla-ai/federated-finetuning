@@ -32,9 +32,7 @@ def get_model(model_cfg: DictConfig):
     """
 
     # Suggested small model options
-    model_choices = {
-        "qwen2-0.5" : "Qwen/Qwen2-0.5B"
-    }
+    model_choices = {"qwen2-0.5": "Qwen/Qwen2-0.5B"}
 
     # Choose the model (default: Mistral-7B)
     model_name = model_choices.get(model_cfg.name.lower(), model_cfg.name)
@@ -44,7 +42,9 @@ def get_model(model_cfg: DictConfig):
     elif model_cfg.quantization == 8:
         quantization_config = BitsAndBytesConfig(load_in_8bit=True)
     else:
-        raise ValueError(f"Use 4-bit or 8-bit quantization. You passed: {model_cfg.quantization}")
+        raise ValueError(
+            f"Use 4-bit or 8-bit quantization. You passed: {model_cfg.quantization}"
+        )
 
     # Load model with efficient settings
     model = AutoModelForCausalLM.from_pretrained(

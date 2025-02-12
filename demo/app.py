@@ -6,12 +6,19 @@ from peft import AutoPeftModelForCausalLM
 from transformers import AutoTokenizer
 
 # Parse command-line arguments
-parser = argparse.ArgumentParser(description="Streamlit Federated Fine-Tuned Model Demo")
-parser.add_argument("--model-path", type=str, required=True, help="Path to the fine-tuned model")
-parser.add_argument("--template", type=str, default="vicuna_v1.1", help="Conversation template")
+parser = argparse.ArgumentParser(
+    description="Streamlit Federated Fine-Tuned Model Demo"
+)
+parser.add_argument(
+    "--model-path", type=str, required=True, help="Path to the fine-tuned model"
+)
+parser.add_argument(
+    "--template", type=str, default="vicuna_v1.1", help="Conversation template"
+)
 args = parser.parse_args()
 
 MODEL_PATH = args.model_path
+
 
 # Load model and tokenizer (cached to avoid reloading on every request)
 @st.cache_resource
@@ -24,6 +31,7 @@ def load_model(model_path):
     tokenizer = AutoTokenizer.from_pretrained(base_model)
 
     return model, tokenizer
+
 
 # Streamlit UI
 st.title("Federated Fine-Tuned Model Demo")
@@ -52,7 +60,7 @@ if st.button("Generate Response"):
     output_ids = (
         output_ids[0]
         if model.config.is_encoder_decoder
-        else output_ids[0][len(input_ids[0]):]
+        else output_ids[0][len(input_ids[0]) :]
     )
 
     # Streaming output with correct spacing
@@ -60,7 +68,9 @@ if st.button("Generate Response"):
     output_text = ""
 
     for token_id in output_ids:
-        token = tokenizer.decode([token_id], skip_special_tokens=True, clean_up_tokenization_spaces=True)
+        token = tokenizer.decode(
+            [token_id], skip_special_tokens=True, clean_up_tokenization_spaces=True
+        )
         output_text += token + " "
         output_placeholder.write(output_text.strip())
         time.sleep(0.02)

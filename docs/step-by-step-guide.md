@@ -33,7 +33,7 @@ pip install -e .  # Install root project dependencies
 ## **Step 3: Running Federated Fine-Tuning**
 ### Run with the Simulation Engine (Recommended)
 ```bash
-flwr run . 
+flwr run .
 
 # Run for 10 rounds with 25% client participation per round
 flwr run . --run-config "num-server-rounds=10 strategy.fraction-fit=0.25"
@@ -53,4 +53,3 @@ To better understand how you can tailor this Blueprint to suit your specific nee
 
 ## 🤝 **Contributing to the Blueprint**
 Want to help improve or extend this Blueprint? Check out the **[Future Features & Contributions Guide](future-features-contributions.md)** to see how you can contribute your ideas, code, or feedback to make this Blueprint even better!
-

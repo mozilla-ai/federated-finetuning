@@ -3,9 +3,15 @@ import toml
 import torch
 from datetime import datetime
 from datasets import load_dataset
-from transformers import AutoTokenizer, TrainingArguments, AutoModelForCausalLM, BitsAndBytesConfig
+from transformers import (
+    AutoTokenizer,
+    TrainingArguments,
+    AutoModelForCausalLM,
+    BitsAndBytesConfig,
+)
 from trl import SFTTrainer, DataCollatorForCompletionOnlyLM
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
+
 
 # Load configuration from pyproject.toml
 def load_config(toml_path="pyproject.toml"):
@@ -14,8 +20,11 @@ def load_config(toml_path="pyproject.toml"):
     model_name = app_config["model"]["name"]
     dataset_name = app_config["dataset"]["name"]
     num_rounds = app_config["num-server-rounds"]
-    num_clients = config["tool"]["flwr"]["federations"]["local-simulation"]["options"]["num-supernodes"]
+    num_clients = config["tool"]["flwr"]["federations"]["local-simulation"]["options"][
+        "num-supernodes"
+    ]
     return model_name, dataset_name, num_clients, num_rounds
+
 
 # Read model, dataset name, and number of clients
 MODEL_NAME, DATASET_NAME, NUM_CLIENTS, NUM_ROUNDS = load_config()
@@ -36,29 +45,36 @@ print(f"Using {subset_size} samples out of {len(dataset['train'])} for fine-tuni
 if "output" in dataset["train"].column_names:
     dataset = dataset.rename_column("output", "response")
 
+
 # Formatting function
 def formatting_prompts_func(example):
-    return [f"### Instruction:\n{example['instruction']}\n### Response: {example['response']}"]
+    return [
+        f"### Instruction:\n{example['instruction']}\n### Response: {example['response']}"
+    ]
+
 
 # Load tokenizer
 print(f"Loading tokenizer: {MODEL_NAME}")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, use_fast=True)
 tokenizer.pad_token = tokenizer.eos_token
-data_collator = DataCollatorForCompletionOnlyLM(tokenizer.encode("\n### Response:", add_special_tokens=False)[2:], tokenizer=tokenizer)
+data_collator = DataCollatorForCompletionOnlyLM(
+    tokenizer.encode("\n### Response:", add_special_tokens=False)[2:],
+    tokenizer=tokenizer,
+)
 
 # Load model with LoRA adapters
 print(f"Loading model: {MODEL_NAME}")
 base_model = AutoModelForCausalLM.from_pretrained(
     MODEL_NAME,
     quantization_config=BitsAndBytesConfig(load_in_4bit=True),
-    torch_dtype=torch.bfloat16
+    torch_dtype=torch.bfloat16,
 )
 base_model = prepare_model_for_kbit_training(base_model)
 
 peft_config = LoraConfig(
-    r=16, 
-    lora_alpha=32, 
-    lora_dropout=0.075, 
+    r=16,
+    lora_alpha=32,
+    lora_dropout=0.075,
     task_type="CAUSAL_LM",
     target_modules=["q_proj", "v_proj"],
 )

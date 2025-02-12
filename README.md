@@ -2,7 +2,7 @@
 
 # Federated Fine-Tuning Blueprint with Flower
 
-Large language models (LLMs), which have been trained on vast amounts of publicly accessible data, are great.  
+Large language models (LLMs), which have been trained on vast amounts of publicly accessible data, are great.
 
 However, the availability of high-quality public data is decreasing. Federated AI enables multiple data owners to collaboratively fine-tune models **without sharing raw data**, unlocking access to distributed private datasets.
 
@@ -29,21 +29,21 @@ git clone https://github.com/mozilla-ai/blueprint-federated-finetuning.git
 cd blueprint-federated-finetuning
 ```
 
-### 2️⃣ Update submodule and install dependencies 
+### 2️⃣ Update submodule and install dependencies
 ```bash
 pip install -e .  # Install root project dependencies
 ```
 
 ### 3️⃣ Run Federated Fine-Tuning with Flower
 
-You can run your Flower project in both simulation and deployment mode without making changes to the code. If you are starting with Flower, we recommend you using the simulation mode as it requires fewer components to be launched manually. By default, `flwr run` will make use of the Simulation Engine. We have provided you with a `run.sh` script for this Blueprint. The default model that runs is FL simulations with a 4-bit [Qwen2-0.5B-Instruct](https://huggingface.co/Qwen/Qwen2-0.5B-Instruct) model involving 2 clients per rounds for 100 FL rounds. You can override configuration parameters by either change them in `pyproject.toml` or directly when calling the `flwr run .`. 
+You can run your Flower project in both simulation and deployment mode without making changes to the code. If you are starting with Flower, we recommend you using the simulation mode as it requires fewer components to be launched manually. By default, `flwr run` will make use of the Simulation Engine. We have provided you with a `run.sh` script for this Blueprint. The default model that runs is FL simulations with a 4-bit [Qwen2-0.5B-Instruct](https://huggingface.co/Qwen/Qwen2-0.5B-Instruct) model involving 2 clients per rounds for 100 FL rounds. You can override configuration parameters by either change them in `pyproject.toml` or directly when calling the `flwr run .`.
 
 #### Run with the Simulation Engine (Recommended)
 > \[!NOTE\]
 > Check the [Simulation Engine documentation](https://flower.ai/docs/framework/how-to-run-simulations.html) to learn more about Flower simulations and how to optimize them.
 
-```bash 
-flwr run . 
+```bash
+flwr run .
 
 # Run for 10 rounds but increasing the fraction of clients that participate per round to 25%
 flwr run . --run-config "num-server-rounds=10 strategy.fraction-fit=0.25"
@@ -67,14 +67,14 @@ python demo/generate_response.py --peft-path=/path/to/trained-model \
 
 ## 🎭 Interactive Demo: Streamlit App
 
-We provide a Streamlit web demo for testing the fine-tuned model in real time. This assumes that you have ssh:ed into remote machine. 
+We provide a Streamlit web demo for testing the fine-tuned model in real time. This assumes that you have ssh:ed into remote machine.
 
 ### Run the Demo
-```bash 
+```bash
 streamlit run demo/app.py --server.address=0.0.0.0 --server.port=8501 -- --model-path <MODEL_PATH> # <FLOWERTUNE-LLM-REPO><RESULTS><TIMESTAMP><PEFT_#>
 ```
 Once running, open your browser and go to:
-```bash 
+```bash
 https://localhost:8501
 ```
 Here, you can input a question and receive model-generated responses.
@@ -94,7 +94,7 @@ python src/fine-tune-local.py
 ```
 After training, the fine-tuned model is stored in `results/` for later evaluation.
 
-We also provide `./demo/run.sh` that runs federated fine-tuning with default settings, and thereafter local fine-tuning. It will then test both fine-tuned models on benchmark data.  
+We also provide `./demo/run.sh` that runs federated fine-tuning with default settings, and thereafter local fine-tuning. It will then test both fine-tuned models on benchmark data.
 
 ## Expected results
 
@@ -129,11 +129,11 @@ federated-finetuning-blueprint
 │   │   ├── utils.py         # Useful functions
 │   ├── fine-tune-local.py   # Fine-tunes a local model
 │   ├── plot_results.py      # Visualization script
-│   
+│
 ├── demo/
 │   ├── generate_response.py  # Script to generate model responses
 │   ├── app.py                # Run streamlit demo
-│   
+│
 ├── pyproject.toml  # Project metadata and dependencies
 ```
 
@@ -161,4 +161,3 @@ This project is licensed under the Apache 2.0 License. See the LICENSE file for 
 
 Contributions are welcome!
 To get started, check out the CONTRIBUTING.md file.
-

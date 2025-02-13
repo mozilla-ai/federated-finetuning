@@ -41,7 +41,7 @@ python ./src/benchmarks/general-nlp/eval.py \
 
 python ./src/benchmarks/general-nlp/eval.py \
   --base-model-name-path=Qwen/Qwen2-0.5B-Instruct \
-  --peft-path="$FEDERATED_PATH" \
+  --peft-path="$LOCAL_PATH" \
   --run-name=qwen-fed \
   --batch-size=16 \
   --quantization=4 \

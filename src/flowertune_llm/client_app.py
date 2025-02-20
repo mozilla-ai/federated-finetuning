@@ -65,6 +65,13 @@ class FlowerClient(NumPyClient):
         """Implement distributed fit function for a given client."""
         set_parameters(self.model, parameters)
 
+        # Ensure model is on the correct device
+        self.model.to(self.device)
+
+        # Ensure optimizer updates only parameters that require gradients
+        for param in self.model.parameters():
+            param.requires_grad = True
+
         new_lr = cosine_annealing(
             int(config["current_round"]),
             self.num_rounds,

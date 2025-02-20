@@ -44,11 +44,19 @@ You can run your Flower project in both simulation and deployment mode without m
 > \[!NOTE\]
 > Check the [Simulation Engine documentation](https://flower.ai/docs/framework/how-to-run-simulations.html) to learn more about Flower simulations and how to optimize them.
 
+It is highly recommended that you run this example on GPU as it will take much __much__ longer on CPU. The default commands run the federated fine-tuning on GPU. 
+
 ```bash
 flwr run .
 
 # Run for 10 rounds but increasing the fraction of clients that participate per round to 25%
 flwr run . --run-config "num-server-rounds=10 strategy.fraction-fit=0.25"
+```
+
+Nevertheless, if you want to run federated fine-tuning on CPU, you can run the following which disables quantization and sets number of GPUs to 0: 
+```bash
+# Set number of CPUs to max available for faster processing. 
+flwr run . --run-config "model.quantization=0" --federation-config "options.num-supernodes=20 options.backend.client-resources.num-gpus=0.0 options.backend.client-resources.num-cpus=4" 
 ```
 
 ### Run with the Deployment Engine

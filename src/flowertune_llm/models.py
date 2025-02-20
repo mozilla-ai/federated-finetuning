@@ -37,21 +37,30 @@ def get_model(model_cfg: DictConfig):
     # Choose the model (default: Mistral-7B)
     model_name = model_choices.get(model_cfg.name.lower(), model_cfg.name)
 
+    # Handle different quantization settings
     if model_cfg.quantization == 4:
         quantization_config = BitsAndBytesConfig(load_in_4bit=True)
+        torch_dtype = torch.bfloat16
+        device_map = "auto"
     elif model_cfg.quantization == 8:
         quantization_config = BitsAndBytesConfig(load_in_8bit=True)
+        torch_dtype = torch.bfloat16
+        device_map = "auto"
+    elif model_cfg.quantization == 0:
+        quantization_config = None  # No quantization
+        torch_dtype = torch.float32  # Ensure compatibility with CPU training
+        device_map = "cpu"  # Force model to run on CPU
     else:
         raise ValueError(
-            f"Use 4-bit or 8-bit quantization. You passed: {model_cfg.quantization}"
+            f"Use 4-bit, 8-bit, or disable quantization (0). You passed: {model_cfg.quantization}"
         )
 
-    # Load model with efficient settings
+    # Load model
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
         quantization_config=quantization_config,
-        torch_dtype=torch.bfloat16,
-        device_map="auto",  # Optimizes placement of model layers on available hardware
+        torch_dtype=torch_dtype,
+        device_map=device_map,
     )
 
     model = prepare_model_for_kbit_training(

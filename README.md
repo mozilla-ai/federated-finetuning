@@ -1,4 +1,13 @@
-<p align="center"><img src="./images/Blueprints-logo.png" width="35%" alt="Project logo"/></p>
+<p align="center">
+  <picture>
+    <!-- When the user prefers dark mode, show the white logo -->
+    <source media="(prefers-color-scheme: dark)" srcset="./images/Blueprint-logo-white.png">
+    <!-- When the user prefers light mode, show the black logo -->
+    <source media="(prefers-color-scheme: light)" srcset="./images/Blueprint-logo-black.png">
+    <!-- Fallback: default to the black logo -->
+    <img src="./images/Blueprint-logo-black.png" width="35%" alt="Project logo"/>
+  </picture>
+</p>
 
 # Federated Fine-Tuning Blueprint with Flower
 
@@ -8,11 +17,13 @@ However, the availability of high-quality public data is decreasing. Federated A
 
 This blueprint demonstrates **Federated Fine-Tuning of LLMs** using [Flower](https://flower.ai), a framework for federated learning. We fine-tune **Qwen2-0.5B-Instruct model** on the **Alpaca-GPT4 dataset** using **PEFT-based LoRA adapters**.
 
+📘 To explore this project further and discover other Blueprints, visit the [**Blueprints Hub**](https://developer-hub.mozilla.ai/).
+
+👉 📖 For more detailed guidance on using this project, please visit our [**Docs here**](https://mozilla-ai.github.io/federated-finetuning/)
+
 <p align="center">
   <img src="./images/flower_visual.png" alt="Flower" width="600">
 </p>
-
-### 👉 📖 For detailed guidance, visit our [Docs here](https://mozilla-ai.github.io/federated-finetuning/)
 
 ---
 

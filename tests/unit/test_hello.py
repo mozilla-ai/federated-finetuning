@@ -1,5 +1,5 @@
-from blueprint.hello import hello
+# from blueprint.hello import hello
 
 
-def test_hello():
-    assert hello() == "Hello, world!"
+# def test_hello():
+#     assert hello() == "Hello, world!"

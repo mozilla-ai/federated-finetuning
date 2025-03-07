@@ -67,7 +67,7 @@ class FlowerClient(NumPyClient):
         """Implement distributed fit function for a given client."""
         set_parameters(self.model, parameters)
 
-        if self.device.type == "cpu": 
+        if self.device.type == "cpu":
             # Ensure optimizer updates only parameters that require gradients
             for param in self.model.parameters():
                 param.requires_grad = True

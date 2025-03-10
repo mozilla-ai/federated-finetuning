@@ -11,6 +11,10 @@
 
 # Federated Fine-Tuning Blueprint with Flower
 
+[![](https://dcbadge.limes.pink/api/server/YuMNeuKStr?style=flat)](https://discord.gg/YuMNeuKStr)
+[![Tests](https://github.com/mozilla-ai/speech-to-text-finetune/actions/workflows/tests.yaml/badge.svg)](https://github.com/mozilla-ai/speech-to-text-finetune/actions/workflows/tests.yaml/)
+[![Ruff](https://github.com/mozilla-ai/speech-to-text-finetune/actions/workflows/lint.yaml/badge.svg?label=Ruff)](https://github.com/mozilla-ai/speech-to-text-finetune/actions/workflows/lint.yaml/)
+
 Large language models (LLMs), which have been trained on vast amounts of publicly accessible data, are great.
 
 However, the availability of high-quality public data is decreasing. Federated AI enables multiple data owners to collaboratively fine-tune models **without sharing raw data**, unlocking access to distributed private datasets.
@@ -18,8 +22,6 @@ However, the availability of high-quality public data is decreasing. Federated A
 This blueprint demonstrates **Federated Fine-Tuning of LLMs** using [Flower](https://flower.ai), a framework for federated learning. We fine-tune **Qwen2-0.5B-Instruct model** on the **Alpaca-GPT4 dataset** using **PEFT-based LoRA adapters**.
 
 📘 To explore this project further and discover other Blueprints, visit the [**Blueprints Hub**](https://developer-hub.mozilla.ai/).
-
-👉 📖 For more detailed guidance on using this project, please visit our [**Docs here**](https://mozilla-ai.github.io/federated-finetuning/)
 
 <p align="center">
   <img src="./images/flower_visual.png" alt="Flower" width="600">
@@ -30,9 +32,13 @@ This blueprint demonstrates **Federated Fine-Tuning of LLMs** using [Flower](htt
 ## 📋 Pre-requisites
 - System requirements:
 	- OS: Linux
-	- Python 3.10 or higher
+	- Python 3.10 or higherp
 	- Minimum RAM: 8GB (recommended for LLM fine-tuning)
 	- All dependencies are listed in `pyproject.toml`.
+
+### Built with
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue) [![Hugging Face](https://img.shields.io/badge/Hugging%20Face-%F0%9F%A4%97-yellow)](https://huggingface.co/) [![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/) [![Flower](https://img.shields.io/badge/Flower-yellow?logo=flower&logoColor=black)](https://flower.ai/)
+
 
 ## 🚀 Quick Start
 

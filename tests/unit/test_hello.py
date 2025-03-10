@@ -1,4 +1,5 @@
-from blueprint.hello import hello
+def hello():
+    return "Hello, world!"
 
 
 def test_hello():
